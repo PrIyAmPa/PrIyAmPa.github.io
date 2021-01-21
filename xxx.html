@@ -6,12 +6,12 @@ src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
 <h1>Upload an Image to Logy.AI for diagnosis</h1>
 
 <form id="myform">
-  <label for="imgx">Select image:</label>
+  <label for="finput">Select image:</label>
   <input type="file" id="finput" multiple="false" accept="image/*" >
 <p>  <button type="submit">Submit</button> </p>	
 </form>
 <p>Canvas:</p>
-<canvas id="myCanvas" width="240" height="297"
+<canvas id="myCanvas" width="500" height="500"
 style="border:1px solid #d3d3d3;">
 </canvas>
 <p>Canvas2:</p>
@@ -30,13 +30,56 @@ oform.onsubmit=submit;
 function submit(event) {
   event.preventDefault();
   upload();
-  cutImageUp();
+  //cutImageUp();
+  
 }
+
+function inputToURL(inputElement) {
+    var file = inputElement.files[0];
+    return window.URL.createObjectURL(file);
+    //return file;
+}
+
 function upload() {
   var imgcanvas=document.getElementById("myCanvas");
+  //var ctx = imgcanvas.getContext('2d');
   var fileinput= document.getElementById("finput");
+  //var url = inputToURL(document.getElementById('finput'));
+  //var image= new Image(fileinput);
+  //image.self_ref = image;
+  
+ 
+  //image.src=url;
+
   var image = new SimpleImage(fileinput);
+  setTimeout(() => {  console.log("World!"); }, 20000);
+  var pixel =[image.values()];
+  for (var p in image.values()){
+    var x = p.getX();
+    var y = p.getY();
+    console.log(x);
+    console.log(y);
+    w = img.getWidth()
+    if (x > y){
+    p.setRed(255);
+    }
+    if (x + y > w)
+    {
+        p.setRed(255);
+    }
+    if (x > 20){
+        p.setRed(255);
+    }
+   }
+print (image);
+  
+  //ctx.drawImage(image,0,0);
   image.drawTo(imgcanvas);
+  console.log(pixel);
+  console.log(image);
+  console.log(typeof image);
+  //var imgData = ctx.getImageData(0, 0, imgcanvas.width, imgcanvas.height);
+  //console.log(imgData);
 }
 </script>
 <script>
@@ -52,8 +95,11 @@ function cutImageUp() {
     var ctx = canvas.getContext('2d');
     for(var x = 0; x < 3; ++x) {
         for(var y = 0; y < 3; ++y) {
-            ctx.drawImage(image, x * image.width/3, y * image.height/3, image.width/3, image.height/3, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, x * image.width/3, y * image.height/3, image.width/3, image.height/3, 0, 0, canvas.width, canvas.height).data;
             //imagePieces.push(canvas.toDataURL());
+            //canvas.toBlob(function(blob) {
+            //saveAs(blob, "pretty image.png");
+            console.log(imgData);
         }
     }
 
@@ -62,7 +108,7 @@ function cutImageUp() {
     // load one piece onto the page
     var imgcanvas=document.getElementById("myCanvas3");
     var anImageElement= document.getElementById("piece1");
-    anImageElement.src = imagePieces[0];
+    anImageElement.src = blob;
     var imagepir = new SimpleImage(anImageElement);
     imagepir.drawTo(imgcanvas);
 
