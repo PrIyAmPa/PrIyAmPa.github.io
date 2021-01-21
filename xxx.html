@@ -1,0 +1,91 @@
+<html>
+<body>
+<script
+src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+<h1>Upload an Image to Logy.AI for diagnosis</h1>
+
+<form id="myform">
+  <label for="imgx">Select image:</label>
+  <input type="file" id="finput" multiple="false" accept="image/*" >
+<p>  <button type="submit">Submit</button> </p>	
+</form>
+<p>Canvas:</p>
+<canvas id="myCanvas" width="240" height="297"
+style="border:1px solid #d3d3d3;">
+</canvas>
+<p>Canvas2:</p>
+<canvas id="myCanvas2" width="240" height="297"
+style="border:1px solid #d3d3d3;">
+</canvas>
+<p>Canvas3:</p>
+<canvas id="myCanvas3" width="240" height="297"
+style="border:1px solid #d3d3d3;">
+</canvas>
+<img id="piece1">
+
+<script>
+const oform = document.getElementById('myform');
+oform.onsubmit=submit;
+function submit(event) {
+  event.preventDefault();
+  upload();
+  cutImageUp();
+}
+function upload() {
+  var imgcanvas=document.getElementById("myCanvas");
+  var fileinput= document.getElementById("finput");
+  var image = new SimpleImage(fileinput);
+  image.drawTo(imgcanvas);
+}
+</script>
+<script>
+
+function cutImageUp() {
+    var imagePieces = [];
+    var fileinput= document.getElementById("finput");
+    //var image = fileinput;
+    var image = new SimpleImage(fileinput);
+    var canvas = document.getElementById('myCanvas2');
+    canvas.width = image.width/3;
+    canvas.height = image.height/3;
+    var ctx = canvas.getContext('2d');
+    for(var x = 0; x < 3; ++x) {
+        for(var y = 0; y < 3; ++y) {
+            ctx.drawImage(image, x * image.width/3, y * image.height/3, image.width/3, image.height/3, 0, 0, canvas.width, canvas.height);
+            //imagePieces.push(canvas.toDataURL());
+        }
+    }
+
+    // imagePieces now contains data urls of all the pieces of the image
+
+    // load one piece onto the page
+    var imgcanvas=document.getElementById("myCanvas3");
+    var anImageElement= document.getElementById("piece1");
+    anImageElement.src = imagePieces[0];
+    var imagepir = new SimpleImage(anImageElement);
+    imagepir.drawTo(imgcanvas);
+
+}
+</script>
+</body>
+</html>
+
+
+var myImage = document.getElementById('theImageToWorkWith');
+var w = myImage.width, h = myImage.height;
+
+// Create a Canvas element
+var canvas = document.createElement('canvas');
+
+// Size the canvas to the element
+canvas.width = w;
+canvas.height = h;
+
+// Draw image onto the canvas
+var ctx = canvas.getContext('2d');
+ctx.drawImage(myImage, 0, 0);
+
+// Finally, get the image data
+// ('data' is an array of RGBA pixel values for each pixel)
+var data = ctx.getImageData(0, 0, w, h);
