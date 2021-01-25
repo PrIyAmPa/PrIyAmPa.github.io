@@ -30,15 +30,15 @@
     <input type='file' onchange="readURL(this);" />
     <img id="blah" onload="run_function()" src="#" alt="your image" />
     Canvas
-    <canvas onchange="console.log(this)" id="myCanvas1"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas2"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas3"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas4"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas5"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas6"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas7"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas8"></canvas>
-    <canvas onchange="console.log(this)" id="myCanvas9"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas1" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas2" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas3" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas4" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas5" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas6" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas7" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas8" title=""></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas9" title=""></canvas>
 </body>
 <script>
     function readURL(input) {
@@ -144,7 +144,19 @@
 	console.log(avg9);
 	//src="https://unpkg.com/mathjs@9.0.0/lib/browser/math.js"
 
+	canvas1.setAttribute("title", avg1);
+	canvas2.setAttribute("title", avg2);
+	canvas3.setAttribute("title", avg3);
+	canvas4.setAttribute("title", avg4);
+	canvas5.setAttribute("title", avg5);
+	canvas6.setAttribute("title", avg6);
+	canvas7.setAttribute("title", avg7);
+	canvas8.setAttribute("title", avg8);
+	canvas9.setAttribute("title", avg9);
+	
+	
     }
+
 </script>
 
 </html>
