@@ -42,8 +42,11 @@ function inputToURL(inputElement) {
 
 function upload() {
   var imgcanvas=document.getElementById("myCanvas");
-  //var ctx = imgcanvas.getContext('2d');
+  var ctx = imgcanvas.getContext('2d');
   var fileinput= document.getElementById("finput");
+  ctx.drawImage(fileinput,0,0);
+  var imgdata=ctx.getImageData(0,0,490,490).data;
+  console.log(imgdata);
   //var url = inputToURL(document.getElementById('finput'));
   //var image= new Image(fileinput);
   //image.self_ref = image;
@@ -51,33 +54,33 @@ function upload() {
  
   //image.src=url;
 
-  var image = new SimpleImage(fileinput);
-  setTimeout(() => {  console.log("World!"); }, 20000);
-  var pixel =[image.values()];
-  for (var p in image.values()){
-    var x = p.getX();
-    var y = p.getY();
-    console.log(x);
-    console.log(y);
-    w = img.getWidth()
-    if (x > y){
-    p.setRed(255);
-    }
-    if (x + y > w)
-    {
-        p.setRed(255);
-    }
-    if (x > 20){
-        p.setRed(255);
-    }
-   }
-print (image);
+  //var image = new SimpleImage(fileinput);
+  //setTimeout(() => {  console.log("World!"); }, 20000);
+  //var pixel =[image.values()];
+  //for (var p in image.values()){
+    //var x = p.getX();
+   // var y = p.getY();
+   // console.log(x);
+   /// console.log(y);
+   // w = img.getWidth()
+   // if (x > y){
+   /// p.setRed(255);
+   // }
+  //  if (x + y > w)
+  //  {
+   //     p.setRed(255);
+  //  }
+   // if (x > 20){
+    //    p.setRed(255);
+    //}
+  // }
+//print (image);
   
   //ctx.drawImage(image,0,0);
-  image.drawTo(imgcanvas);
-  console.log(pixel);
-  console.log(image);
-  console.log(typeof image);
+  //image.drawTo(imgcanvas);
+  //console.log(pixel);
+ // console.log(image);
+ // console.log(typeof image);
   //var imgData = ctx.getImageData(0, 0, imgcanvas.width, imgcanvas.height);
   //console.log(imgData);
 }

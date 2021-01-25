@@ -1,33 +1,150 @@
+<!DOCTYPE html>
 <html>
+
+<head>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+    <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <style>
+        article,
+        aside,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+    </style>
+</head>
+
 <body>
-<script
-src="http://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
-</script>
-<h1>Upload an Image to Logy.AI for diagnosis</h1>
-
-<form id="myform">
-  <label for="imgx">Select image:</label>
-  <input type="file" id="finput" multiple="false" accept="image/*" >
-<p>  <button type="submit">Submit</button> </p>	
-</form>
-<p>Canvas:</p>
-<canvas id="myCanvas" width="240" height="297"
-style="border:1px solid #d3d3d3;">
-</canvas>
-
-<script>
-const oform = document.getElementById('myform');
-oform.onsubmit=submit;
-function submit(event) {
-  event.preventDefault();
-  upload();
-}
-function upload() {
-  var imgcanvas=document.getElementById("myCanvas");
-  var fileinput= document.getElementById("finput");
-  var image = new SimpleImage(fileinput);
-  image.drawTo(imgcanvas);
-}
-</script>
+    <input type='file' onchange="readURL(this);" />
+    <img id="blah" onload="run_function()" src="#" alt="your image" />
+    Canvas
+    <canvas onchange="console.log(this)" id="myCanvas1"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas2"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas3"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas4"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas5"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas6"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas7"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas8"></canvas>
+    <canvas onchange="console.log(this)" id="myCanvas9"></canvas>
 </body>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+		    .width()
+		    .height();
+            };
+            reader.readAsDataURL(input.files[0]);
+
+        }
+    }
+
+    function run_function() {
+	var img = document.getElementById("blah");
+
+        var canvas1 = document.getElementById("myCanvas1");
+        var ctx1 = canvas1.getContext("2d");
+	var canvas2 = document.getElementById("myCanvas2");
+        var ctx2 = canvas2.getContext("2d");
+	var canvas3 = document.getElementById("myCanvas3");
+        var ctx3 = canvas3.getContext("2d");
+	var canvas4 = document.getElementById("myCanvas4");
+        var ctx4 = canvas4.getContext("2d");
+	var canvas5 = document.getElementById("myCanvas5");
+        var ctx5 = canvas5.getContext("2d");
+	var canvas6 = document.getElementById("myCanvas6");
+        var ctx6 = canvas6.getContext("2d");
+	var canvas7 = document.getElementById("myCanvas7");
+        var ctx7 = canvas7.getContext("2d");
+	var canvas8 = document.getElementById("myCanvas8");
+        var ctx8 = canvas8.getContext("2d");
+	var canvas9 = document.getElementById("myCanvas9");
+        var ctx9 = canvas9.getContext("2d");
+
+        ctx1.drawImage(img,0,0,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx2.drawImage(img,img.width/3,0,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx3.drawImage(img,2*img.width/3,0,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx4.drawImage(img,0,img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx5.drawImage(img,img.width/3,img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx6.drawImage(img,2*img.width/3,img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx7.drawImage(img,0,2*img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx8.drawImage(img,img.width/3,2*img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+	ctx9.drawImage(img,2*img.width/3,2*img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
+
+        imgData1 = ctx1.getImageData(0, 0, img.width, img.height);
+	var sum1= eval(imgData1.data.join('+'));
+	var avg1= sum1/imgData1.data.length;
+	//var mean1= math.mean(imgData1.data);
+	imgData2 = ctx2.getImageData(0, 0, img.width, img.height);
+	var sum2= eval(imgData2.data.join('+'));
+	var avg2= sum2/imgData2.data.length;
+	//var mean2= math.mean(imgData2.data);
+	imgData3 = ctx3.getImageData(0, 0, img.width, img.height);
+	var sum3= eval(imgData3.data.join('+'));
+	var avg3= sum3/imgData3.data.length;
+	//var mean3= math.mean(imgData3.data);
+	imgData4 = ctx4.getImageData(0, 0, img.width, img.height);
+	var sum4= eval(imgData4.data.join('+'));
+	var avg4= sum4/imgData4.data.length;
+	//var mean4= math.mean(imgData4.data);
+	imgData5 = ctx5.getImageData(0, 0, img.width, img.height);
+	var sum5= eval(imgData5.data.join('+'));
+	var avg5= sum5/imgData5.data.length;
+	//var mean5= math.mean(imgData5.data);
+	imgData6 = ctx6.getImageData(0, 0, img.width, img.height);
+	var sum6= eval(imgData6.data.join('+'));
+	var avg6= sum6/imgData6.data.length;
+	//var mean6= math.mean(imgData6.data);
+	imgData7 = ctx7.getImageData(0, 0, img.width, img.height);
+	var sum7= eval(imgData7.data.join('+'));
+	var avg7= sum7/imgData7.data.length;
+	//var mean7= math.mean(imgData7.data);
+	imgData8 = ctx8.getImageData(0, 0, img.width, img.height);
+	var sum8= eval(imgData8.data.join('+'));
+	var avg8= sum8/imgData8.data.length;
+	//var mean8= math.mean(imgData8.data);
+	imgData9 = ctx9.getImageData(0, 0, img.width, img.height);
+	var sum9= eval(imgData9.data.join('+'));
+	var avg9=sum9/imgData9.data.length;
+	//var mean9= math.mean(imgData9.data);
+	console.log(imgData1.data);
+	console.log(imgData2.data);
+	console.log(imgData3.data);
+	console.log(imgData4.data);
+	console.log(imgData5.data);
+	console.log(imgData6.data);
+	console.log(imgData7.data);
+	console.log(imgData8.data);
+	console.log(imgData9.data);
+	console.log(avg1);
+	console.log(avg2);
+	console.log(avg3);
+	console.log(avg4);
+	console.log(avg5);
+	console.log(avg6);
+	console.log(avg7);
+	console.log(avg8);
+	console.log(avg9);
+	//src="https://unpkg.com/mathjs@9.0.0/lib/browser/math.js"
+
+    }
+</script>
+
 </html>
