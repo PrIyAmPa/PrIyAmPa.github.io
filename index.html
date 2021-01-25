@@ -89,39 +89,65 @@
 	ctx9.drawImage(img,2*img.width/3,2*img.height/3,img.width/3,img.height/3,0,0,img.width/3,img.height/3);
 
         imgData1 = ctx1.getImageData(0, 0, img.width, img.height);
-	var sum1= eval(imgData1.data.join('+'));
+	var sum1 = imgData1.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
 	var avg1= sum1/imgData1.data.length;
 	//var mean1= math.mean(imgData1.data);
 	imgData2 = ctx2.getImageData(0, 0, img.width, img.height);
-	var sum2= eval(imgData2.data.join('+'));
+	var sum2 = imgData2.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum2= eval(imgData2.data.join('+'));
 	var avg2= sum2/imgData2.data.length;
 	//var mean2= math.mean(imgData2.data);
 	imgData3 = ctx3.getImageData(0, 0, img.width, img.height);
-	var sum3= eval(imgData3.data.join('+'));
+	var sum3 = imgData3.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum3= eval(imgData3.data.join('+'));
 	var avg3= sum3/imgData3.data.length;
 	//var mean3= math.mean(imgData3.data);
 	imgData4 = ctx4.getImageData(0, 0, img.width, img.height);
-	var sum4= eval(imgData4.data.join('+'));
+	var sum4 = imgData4.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum4= eval(imgData4.data.join('+'));
 	var avg4= sum4/imgData4.data.length;
 	//var mean4= math.mean(imgData4.data);
 	imgData5 = ctx5.getImageData(0, 0, img.width, img.height);
-	var sum5= eval(imgData5.data.join('+'));
+	var sum5 = imgData5.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum5= eval(imgData5.data.join('+'));
 	var avg5= sum5/imgData5.data.length;
 	//var mean5= math.mean(imgData5.data);
 	imgData6 = ctx6.getImageData(0, 0, img.width, img.height);
-	var sum6= eval(imgData6.data.join('+'));
+	var sum6 = imgData6.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum6= eval(imgData6.data.join('+'));
 	var avg6= sum6/imgData6.data.length;
 	//var mean6= math.mean(imgData6.data);
 	imgData7 = ctx7.getImageData(0, 0, img.width, img.height);
-	var sum7= eval(imgData7.data.join('+'));
+	var sum7= imgData7.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum7= eval(imgData7.data.join('+'));
 	var avg7= sum7/imgData7.data.length;
 	//var mean7= math.mean(imgData7.data);
 	imgData8 = ctx8.getImageData(0, 0, img.width, img.height);
-	var sum8= eval(imgData8.data.join('+'));
+	var sum8 = imgData8.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum8= eval(imgData8.data.join('+'));
 	var avg8= sum8/imgData8.data.length;
 	//var mean8= math.mean(imgData8.data);
 	imgData9 = ctx9.getImageData(0, 0, img.width, img.height);
-	var sum9= eval(imgData9.data.join('+'));
+	var sum9 = imgData9.data.reduce(function(a, b){
+            return a + b;
+        }, 0);
+	//var sum9= eval(imgData9.data.join('+'));
 	var avg9=sum9/imgData9.data.length;
 	//var mean9= math.mean(imgData9.data);
 	console.log(imgData1.data);
